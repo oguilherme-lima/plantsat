@@ -147,3 +147,12 @@ $(document).ready(function(){
 
 
  });
+
+
+function valida_form (){
+    if(document.getElementById("endereco").value.length < 1 || document.getElementById("latitude").value.length < 1 || document.getElementById("longitude").value.length < 1 ){
+        alert('Por favor, preencha o campo nome');
+        document.getElementById("endereco").focus();
+        return false
+    }
+}

@@ -1241,14 +1241,14 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   line-height: 40px;
   border: none;
-  outline: none;
+  outline: 1px #000;
   background: #f9f9ff;
   padding: 0 20px;
 }
 
 .single-input:focus {
   outline: none;
-}
+}single-input-primary
 
 .input-group-icon {
   position: relative;
@@ -1290,7 +1290,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 100%;
   line-height: 40px;
-  border: 1px solid transparent;
+  border: 1px solid #28a745;
   outline: none;
   background: #f9f9ff;
   padding: 0 20px;
@@ -2163,6 +2163,32 @@ nav a:hover {
   right: 400px;
 }
 
+.banner-area-map {
+  margin-top: -70px;
+}
+
+.banner-area-map .fullscreen {
+  height: 350px !important;
+}
+
+@media (max-width: 1028px) {
+  .banner-area-map .fullscreen {
+    height: 150px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-area-map .fullscreen {
+    height: 350px !important;
+  }
+}
+
+.banner-area-map .desc {
+  position: absolute;
+  bottom: 100px;
+  right: 400px;
+}
+
 .carousel-caption, .carousel-caption h2 {
   color: #fff;
   text-align: right;
@@ -2172,12 +2198,22 @@ nav a:hover {
  font-size: 60px;
 }
 
+.title-header-MAP{
+ font-size: 60px;
+}
+
 .text-description{
  font-size: 30px;
 }
 @media (max-width: 767px) {
     .text-description{
      font-size: 22px;
+    }
+    .title-header-MAP{
+    font-size: 30px;
+    }
+    title-description-MAP{
+    font-size: 15px;
     }
 }
 
