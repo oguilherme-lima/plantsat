@@ -3,3 +3,4 @@ flask==1.0.2
 googlemaps==3.0.2
 flask_compress==1.4.0
 flask_googlemaps
+pillow
