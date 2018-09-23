@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
+		<!-- Author Meta -->
+		<meta name="author" content="PlantSat">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>{{ titulo }}</title>
+
+		<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">  -->
+			<!--
+			CSS
+			============================================= -->
+        <link type= "text/css" rel="stylesheet" href="{{ url_for('static', filename='css/linearicons.css') }}">
+        <link type= "text/css" rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+        <link type= "text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link type= "text/css" rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    </head>
+    <body>
+        <!-- Start Header Area -->
+        <header class="default-header">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="header-top d-flex justify-content-between align-items-center">
+                        <div class="logo">
+                            <a href="#home"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                        </div>
+                        <div class="main-menubar d-flex align-items-center">
+                            <nav class="hide">
+                                <a href="#home">Ínicio</a>
+                                <a href="#about">Teste agora</a>
+                            </nav>
+                            <div class="menu-bar"><span class="lnr lnr-menu"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Header Area -->
+    {% block conteudo %}
+    {% endblock conteudo %}
+    <!-- start footer Area -->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="row footer-bottom d-flex justify-content-between">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved</a></p>
+
+                </div>
+            </div>
+        </footer>
+        <!-- End footer Area -->
+
+        <script src="{{ url_for('static', filename='js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/parallax.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/simple-lightbox.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+
+    </body>
+</html>
