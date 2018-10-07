@@ -9,7 +9,7 @@ def retorna_tipo_plantacao(nomeImagem):
     estrutura_rede = arquivo.read()
     arquivo.close()
     classificador = model_from_json(estrutura_rede)
-    classificador.load_weights("files_ai\laranja.h5")
+    #classificador.load_weights("files_ai\laranja.h5")
 
     # Carrega Imagem
     imagem = image.load_img(nomeImagem, target_size=(64,64))
