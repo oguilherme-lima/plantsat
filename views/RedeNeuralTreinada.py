@@ -5,11 +5,11 @@ from keras import backend as K
 
 def retorna_tipo_plantacao(nomeImagem):
     #Carrega rede neural
-    arquivo = open("files_ai\laranja.json", "r")
+    arquivo = open("laranja.json", "r")
     estrutura_rede = arquivo.read()
     arquivo.close()
     classificador = model_from_json(estrutura_rede)
-    classificador.load_weights("files_ai\laranja.h5")
+    classificador.load_weights("laranja.h5")
 
     # Carrega Imagem
     imagem = image.load_img(nomeImagem, target_size=(64,64))
