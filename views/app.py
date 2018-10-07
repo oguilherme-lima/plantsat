@@ -6,9 +6,7 @@ from io import BytesIO
 from PIL import Image
 import googlemaps
 import os
-
-# TODO IMPORTAR API
-# from NOME_DO_ARQUIVO_PY_DA_IA import NOME_METODO_IA
+from .RedeNeuralTreinada import retorna_tipo_plantacao
 
 # Configura a aplicação, os diretorios de CSS, JS, Imagens e fontes
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
@@ -47,6 +45,7 @@ def mapa():
     # Boolean que define se existe plantação ou não
     # Recebe o resultado da IA
     e_laranja = False
+    # Boolean que define o botão do mapa
     processar = True
     # Visualização Padrão - Brasil
     mapa = maps(-21.9697, -47.8199, 5)
@@ -61,7 +60,7 @@ def mapa():
         # Salva a imagem
         # Retorna o nome da imagem e salva na sessão
         # Retorna 0 ou 1 de acordo com o resultado da IA e salva a sessão
-        session['nomeImagem'], session['e_laranja'] = salvar_imagem(request. args.get('latitude'), request. args.get('longitude'))
+        session['nomeImagem'], session['e_laranja'] = salvar_imagem(str(request. args.get('latitude')).strip(), str(request. args.get('longitude')).strip())
         # Redireciona para a página de resultado
         return redirect(url_for('resultado'))
     # Se existir texto no campo endereço da tela
@@ -72,9 +71,9 @@ def mapa():
             # Faz a busca de todos os dados do endereço na API
             geocode_result = gmaps.geocode(endereco)
             # Recebe a latitude do retorno da API
-            latitude = geocode_result[0]['geometry']['location']['lat']
+            latitude = str(geocode_result[0]['geometry']['location']['lat']).strip()
             # Recebe a longitude do retorno da API
-            longitude = geocode_result[0]['geometry']['location']['lng']
+            longitude = str(geocode_result[0]['geometry']['location']['lng']).strip()
             # Define a visualização padrão do mapa que será visualizado pelo usuário
             mapa = maps(latitude, longitude, 18)
             # Apresenta mensagem de sucesso
@@ -89,9 +88,9 @@ def mapa():
     elif (request. args.get('latitude') and request. args.get('longitude')):
         try:
             # Recebe a latitude do input
-            latitude = request. args.get('latitude')
+            latitude = str(request. args.get('latitude')).strip()
             # Recebe a longitude do input
-            longitude = request. args.get('longitude')
+            longitude = str(request. args.get('longitude')).strip()
             # Define a visualização padrão do mapa que será visualizado pelo usuário
             mapa = maps(latitude, longitude, 17)
             # Apresenta mensagem de sucesso
@@ -103,10 +102,12 @@ def mapa():
             # Printa no terminal o erro
             print(e)
     else:
+        # Se não existir valores nos campos naõ exibe botão de processar
         processar = False
 
-    return render_template('mapa.html', titulo="Mapa", movingmap=mapa, endereco_salvo=endereco.title(), latitude=latitude,
-                           longitude=longitude, e_laranja=e_laranja, nomeImagem=nomeImagem, processar=processar)
+    return render_template('mapa.html', titulo="Mapa", movingmap=mapa, endereco_salvo=endereco.title(),
+                           latitude=latitude, longitude=longitude, e_laranja=e_laranja,
+                           nomeImagem=nomeImagem, processar=processar)
 
 # Retorna uma instancia do tipo MAP com os dados para criar o mapa
 def maps(latitude, longitude, zoom):
@@ -167,9 +168,9 @@ def salvar_imagem(latitude, longitude):
         # Salva a imagem no diretorio do projeto
         image.save(nomeImagem)
         # Recebe o retorno da API
-        e_laranja = True # TODO - substituir por metodo da api que retorna se é laranja
+        e_laranja = retorna_tipo_plantacao(nomeImagem)
         # Remove o caminho do nome da imagem
-        nomeImagem =  str(latitude) + str(longitude) + ".png"
+        nomeImagem = str(latitude) + str(longitude) + ".png"
         return nomeImagem, e_laranja
     # Se acontecer algum erro
     except Exception as e:

@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-6 about-right">
                         {# Se for e_laranja == true, printa a primeira msg, se não printa a segunda #}
-                        <h1>{{ 'Sua Plantação é de laranja' if e_laranja else 'Sua Plantação não é de laranja' }}</h1>
+                        <h1 style="{{ 'color:#28a745' if e_laranja else ''}}">{{ 'Sua Plantação é de laranja' if e_laranja else 'Sua Plantação não é de laranja' }}</h1>
                         <center><img src="{{ url_for('static', filename='img/plantsat.png') }}" style="max-width:50%"></center>
                     </div>
                 </div>
