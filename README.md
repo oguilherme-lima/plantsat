@@ -62,11 +62,11 @@ sudo pip3 install -r requirements.txt
 
 **Windows**
 ```
-pip3 install gunicorn==19.9.0 flask==1.0.2 googlemaps==3.0.2 flask_compress==1.4.0 flask_googlemaps pillow
+pip3 install gunicorn==19.9.0 flask==1.0.2 googlemaps==3.0.2 flask_compress==1.4.0 flask_googlemaps pillow tensorflow keras
 ```
 **Linux**
 ```
-sudo pip3 install gunicorn==19.9.0 flask==1.0.2 googlemaps==3.0.2 flask_compress==1.4.0 flask_googlemaps pillow
+sudo pip3 install gunicorn==19.9.0 flask==1.0.2 googlemaps==3.0.2 flask_compress==1.4.0 flask_googlemaps pillow tensorflow keras
 ```
 ### Exportar e rodar a aplicação
 

@@ -5,11 +5,11 @@ from keras import backend as K
 
 def retorna_tipo_plantacao(nomeImagem):
     #Carrega rede neural
-    arquivo = open("laranja.json", "r")
+    arquivo = open("views/laranja.json", "r")
     estrutura_rede = arquivo.read()
     arquivo.close()
     classificador = model_from_json(estrutura_rede)
-    classificador.load_weights("laranja.h5")
+    classificador.load_weights("views/laranja.h5")
 
     # Carrega Imagem
     imagem = image.load_img(nomeImagem, target_size=(64,64))
@@ -20,4 +20,4 @@ def retorna_tipo_plantacao(nomeImagem):
     # Previsão
     previsor = classificador.predict(imagem)
     K.clear_session()
-    return False if previsor < 0.50 else True
+    return False if previsor > 0.50 else True
