@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+{# Topo da página #}
+<section class="banner-area-map relative" id="home">
+    <div class="slider"><div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div style="background-color:#164012; height:72px">
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+{# Sessão com informações da pagina#}
+<section class="About-area section-gap" id="mapa" style="margin-top:5%; padding-top:0px">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-12 col-md-12">
+                <div class="row d-flex align-items-center" style="padding-bottom:0px; margin-bottom:0px;">
+                    <div class="col-lg-6 about-left">
+                        <img class="img-fluid" src="{{ url_for('static', filename='downloaded_images/' + nomeImagem) }}" alt="">
+                    </div>
+                    <div class="col-lg-6 about-right">
+                        {# Se for e_laranja == true, printa a primeira msg, se não printa a segunda #}
+                        <h1>{{ 'Sua Plantação é de laranja' if e_laranja else 'Sua Plantação não é de laranja' }}</h1>
+                        <center><img src="{{ url_for('static', filename='img/plantsat.png') }}" style="max-width:50%"></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock conteudo %}

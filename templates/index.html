@@ -7,9 +7,9 @@
 				          <!-- Slide One - Set the background image for this slide in the line below -->
 				          <div class="carousel-item active" style="background-image: url({{ url_for('static', filename='img/imagem.jpg') }})">
 				            <div class="carousel-caption d-md-block">
-				              <h2 class="text-uppercase title-header">PLANTSAT</h2>
+				              <h2 class="title-header">PlantSat</h2>
 				              <p class="text-description">
-								NÓS SABEMOS O QUE VOCÊ CULTIVA	
+								Nós sabemos o que você cultiva.
 				              </p>
 				            </div>
 				          </div>
@@ -20,7 +20,7 @@
 
 
 			<!-- Start About Area -->
-			<section class="About-area section-gap" id="about">
+			<section class="about-area section-gap" id="about">
 				<div class="container">
 					<div class="row d-flex align-items-center">
 						<div class="col-lg-6 about-left">
@@ -31,7 +31,7 @@
 								O <b>PlantSat</b> é um software de identificação de culturas em imagens de satélite.
 							</h1>
 							<p style="font-color:black; font-size:1.3em;">
-								Para que nosso produdo se tornasse realidade, utilizamos Machine Learning para identificar a cultura cultivada. Machine Learning é um vertente da inteligência artificial que se baseia na ideia de que sistemas podem aprender com dados, identificar padrões e tomar decisões
+								Para que nosso produdo se tornasse realidade, utilizamos Machine Learning para identificar a cultura cultivada. Machine Learning é um vertente da inteligência artificial que se baseia na ideia de que sistemas podem aprender com dados, identificar padrões e tomar decisões.
 							</p>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 								<img class="info-img" src="{{ url_for('static', filename='img/map.png') }}" alt="">
 							</div>
 							<h4 class="text-white">
-								<a>Digite o endereço do local a ser analisado</a>
+								<a>Digite o endereço ou a latitude e longitude do local a ser analisado.</a>
 							</h4>
 								</center>
 						</div>
@@ -67,7 +67,7 @@
 								<img class="info-img" src="{{ url_for('static', filename='img/layers.png') }}" alt="">
 							</div>
 							<h4 class="text-white">
-								<a >Nosso algoritmo dividirá o mapa em camadas e verificará camada por camada, para descobrir o tipo de plantação</a>
+								<a >O sistema analisa a imagem e identifica se há plantações de laranja.</a>
 							</h4>
 								</center>
 						</div>
@@ -77,7 +77,7 @@
 								<img class="info-img" src="{{ url_for('static', filename='img/leaf.png') }}" alt="">
 							</div>
 							<h4 class="text-white">
-								<a >E pronto. Vamos te retornar a cultura cultivada.</br>Simples e rápido</a>
+								<a >E pronto. Vamos te retornar o resultado.</br>Simples e rápido.</a>
 							</h4>
 							</center>
 						</div>
@@ -92,7 +92,7 @@
 				<div class="container">
 					<div class="row">
 						 <div class="col-lg-9 callto-left">
-						 	<h1 class="text-uppercase">E aí, bora testar?</h1>
+						 	<h1>E aí, bora testar?</h1>
 						 </div>
 						 <div class="col-lg-3 callto-right">
 						 	<a href="{{ url_for('mapa') }}" class="genric-btn primary radius text-uppercase">CLIQUE AQUI</a>

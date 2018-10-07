@@ -4,7 +4,7 @@
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
-		<link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.ico') }}">
 		<!-- Author Meta -->
 		<meta name="author" content="PlantSat">
 		<!-- Meta Description -->
@@ -50,6 +50,7 @@
     {% block conteudo %}
     {% endblock conteudo %}
     <!-- start footer Area -->
+        {% if titulo != "Resultado" %}
         <footer class="footer-area">
             <div class="container">
                 <div class="row footer-bottom d-flex justify-content-between">
@@ -59,6 +60,7 @@
                 </div>
             </div>
         </footer>
+        {% endif %}
         <!-- End footer Area -->
 
         <script src="{{ url_for('static', filename='js/vendor/jquery-2.2.4.min.js') }}"></script>

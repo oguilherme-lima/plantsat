@@ -1,14 +1,13 @@
 {% extends "template.html" %}
 {% block conteudo %}
 
-<!-- start banner Area -->
+{# Topo da página #}
 <section class="banner-area-map relative" id="home">
     <div class="slider"><div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
             <div class="carousel-item active" style="background-image: url({{ url_for('static', filename='img/imagem.jpg') }}); max-height:350px">
                 <div class="carousel-caption d-md-block">
-                    <h2 class="text-uppercase title-header-map">IDENTIFIQUE A CULTURA</h2>
+                    <h2 class="title-header-map">Identifique a Cultura</h2>
                 </div>
             </div>
         </div>
@@ -17,29 +16,38 @@
 </section>
 {# Inclui mensagens do flask #}
 {% include "flash.html" %}
-<section class="About-area section-gap" id="mapa">
+
+{# Sessão com informações da pagina#}
+<section class="About-area section-gap" id="mapa" style="margin-top:5%; padding-top:0px">
     <div class="container">
-        <div class="row d-flex"><!-- End banner Area -->
-            <div class="col-lg-12 col-md-12" style="margin-left:0px; padding-lef:0px;">
-                <form>
-                    <h3 class="mb-30">DIGITE O ENDEREÇO</h3>
-                    <div class="mt-10">
-                        <input type="text" name="endereco" placeholder="Digite o endereço" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o endereço'" class="single-input-primary">
-                    </div>
-                    <div class="mt-10">
-                        <h3 class="mb-30">OU, DIGITE A LATITUDE E LONGITUDE</h3>
-                        <input style="margin-bottom:5px;"type="text" name="latitude" placeholder="Digite a latitude" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a latitude'" class="single-input-primary">
-                        <input type="text" name="longitude" placeholder="Digite a longitude" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a longitude'" class="single-input-primary">
-                    </div>
-                    <div class="mt-10">
-                        <button type="submit" onclick="valida_form()" class="btn btn-outline-success btn-lg btn-block">BUSCAR</button>
-                    </div>
-
-                </form>
-
-            {{movingmap.js}}<p>{{movingmap.html}}</p>
-
+        <div class="row d-flex">
+            <div class="col-lg-6 col-md-6" style="margin-top:0px; padding-top:0px">
+            {# Tela 2 - Tela com inputs, mapa e botão processar #}
+                {{movingmap.js}}<p>{{movingmap.html}}</p>
             </div>
+            <div class="col-lg-6 col-md-6" style="margin-top:2%; padding-top:0px">
+                <form>
+                    {# Tela 1 - Tela com inputs e botão de busca #}
+                    <h3 class="mb-30">Digite o endereço:</h3>
+                    <div class="mt-10">
+                        <input type="text" value="{{endereco_salvo}}" name="endereco" placeholder="Digite o endereço" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o endereço'" class="single-input-primary">
+                    </div>
+                    <div class="mt-10">
+                        <h3 class="mb-30">ou, digite a logitude e latitude:</h3>
+                        <input style="margin-bottom:5px;"type="text" value="{{latitude}}" name="latitude" placeholder="Digite a latitude" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a latitude'" class="single-input-primary">
+                        <input type="text" value="{{longitude}}" name="longitude" placeholder="Digite a longitude" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a longitude'" class="single-input-primary">
+                    </div>
+                    <div class="mt-10">
+                        <button type="submit" onclick="valida_form()" class="btn btn-outline-success btn-lg btn-block">Buscar</button>
+                    </div>
+                    {% if processar %}
+                    <div class="mt-10">
+                        <button type="submit" value="{{ 'processar' if processar else '' }}" name="processar" onclick="valida_form()" class="btn btn-success btn-lg btn-block">Processar</button>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
         </div>
     </div>
 </section>

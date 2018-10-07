@@ -491,7 +491,7 @@ mark,
 
 .initialism {
   font-size: 90%;
-  text-transform: uppercase;
+
 }
 
 .blockquote {
@@ -7612,12 +7612,12 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
+.text-white a {
+    text-transform:lowercase
+ }
+
 .text-lowercase {
   text-transform: lowercase !important;
-}
-
-.text-uppercase {
-  text-transform: uppercase !important;
 }
 
 .text-capitalize {
