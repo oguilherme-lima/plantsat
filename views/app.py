@@ -142,11 +142,11 @@ def maps(latitude, longitude, zoom):
 def salvar_imagem(latitude, longitude):
     try:
         # Define o tipo de visualização do mapa
-        # Tipos
-            # roadmap - Exibe a visualização padrão do mapa
-            # satellite - Exibe imagens de satelites do Google Earth
-            # hybrid - Exibe uma mistura satellite com roadmap
-            # terrain - exibe um mapa físico com base nas informações do terreno.
+        # Tipos:
+            # roadmap   - Exibe a visualização padrão do mapa;
+            # satellite - Exibe imagens de satelites do Google Earth;
+            # hybrid    - Exibe uma mistura satellite com roadmap;
+            # terrain   - Exibe um mapa físico com base nas informações do terreno.
         maptype = "satellite"
         # Define o tamanho da imagem que será baixada
         imageSize = '800x800'

@@ -11,6 +11,8 @@ import os
 # Chave de utilização Google Maps
 gmaps_key = "AIzaSyC18sKb1tmkH6aj3XHTjG-3V6XHIlINw-k"
 
+# RETORNA UM VALOR ENTRE 0 E 1 QUE DEFINE A PROXIMIDADE
+# DA IMAGEM RECEBIDA SER OU NÃO PLANTAÇÃO DE LARANJA
 def retorna_tipo_plantacao(nomeImagem):
     #Carrega rede neural
     arquivo = open("laranja.json", "r")
@@ -27,16 +29,18 @@ def retorna_tipo_plantacao(nomeImagem):
 
     # Previsão
     previsor = classificador.predict(imagem)
+    # Limpa o cache
     K.clear_session()
-    return False if previsor > 0.50 else True
+    return previsor
 
-# Gera uma imagem do local pesquisado no Google Maps
+# VERIFICA SE É LARANJA OU NÃO E RETORNA DADOS SOBRE A ANALISE
 def verifica_tipo(coordenadas):
     try:
-        # Limpa o console
+        # Limpa o console - Util se for rodar o script no TERMINAL ou CMD
         os.system('cls' if os.name == 'nt' else 'clear')
         # Recebe a quantidade de erros
         qtd_erros = 0
+        # Para cada coordenada na lista
         for coordenada in coordenadas:
             # Recebe as coordenadas do usuario
             latitude = coordenada[0]
@@ -44,11 +48,11 @@ def verifica_tipo(coordenadas):
             # Recebe o resultado esperado da coordenada inserida
             resultado_esperado = coordenada[2]
             # Define o tipo de visualização do mapa
-            #  Tipos
-                #  roadmap - Exibe a visualização padrão do mapa
-                #  satellite - Exibe imagens de satelites do Google Earth
-                # hybrid - Exibe uma mistura satellite com roadmap
-                # terrain - exibe um mapa físico com base nas informações do terreno.
+            # Tipos:
+                # roadmap   - Exibe a visualização padrão do mapa;
+                # satellite - Exibe imagens de satelites do Google Earth;
+                # hybrid    - Exibe uma mistura satellite com roadmap;
+                # terrain   - Exibe um mapa físico com base nas informações do terreno.
             maptype = "satellite"
             # Define o tamanho da imagem que será baixada
             imageSize = '800x800'
@@ -68,20 +72,25 @@ def verifica_tipo(coordenadas):
             nomeImagem = str(latitude) + str(longitude) + ".png"
             # Salva a imagem no diretorio do projeto
             image.save(nomeImagem)
-            # Recebe o retorno da IA
-            e_laranja = retorna_tipo_plantacao(nomeImagem)
+            # Recebe o retorno da IA com a previsão
+            previsor = retorna_tipo_plantacao(nomeImagem)
+            # Verifica se é laranja ou não
+            # Se a previsão for maior que 0.5, não é laranja
+            e_laranja = False if previsor > 0.50 else True
             # Remove a imagem do diretorio
             os.remove(nomeImagem)
             # Imprime no console
-                # LATITUDE: X || LONGITUDE: Y
+                # LATITUDE:  X || LONGITUDE: Y
                 # RESULTADO: É OU NÃO LARANJA
-                # ESPERADO: É OU NÃO LARANJA
+                # ESPERADO:  É OU NÃO LARANJA
+                # PREVISAO:  VALOR
             print('LATITUDE: ', latitude, ' || LONGITUDE: ', longitude,
-                '\nRESULTADO: ', 'É LARANJA' if e_laranja else 'NÃO É LARANJA',
-                '\nESPERADO: ', resultado_esperado, '\n' )
+                '\nRESULTADO : ', 'É LARANJA' if e_laranja else 'NÃO É LARANJA',
+                '\nESPERADO  : ', resultado_esperado,
+                '\nPREVISAO  : ', '{0:.22f}'.format(previsor[0][0]), '\n')
 
             # Se o resultado é diferente do resultado esperado, adiciona 1 nos erros
-            if (('E LARANJA' if e_laranja else 'NAO E LARANJA') != resultado_esperado):
+            if (('É LARANJA' if e_laranja else 'NÃO É LARANJA') != resultado_esperado):
                 qtd_erros += 1
 
         # Informações dos resultados
@@ -93,18 +102,19 @@ def verifica_tipo(coordenadas):
     # Printa o erro no terminal
         print(e)
 
-
+# Lista com as coordenadas que serão analisadas
 coordenadas = [
-	[-22.464062,-46.485597,"NAO E LARANJA"],
-	[-22.025754,-46.612979,"NAO E LARANJA"],
-	[-22.046688,-46.627706,"NAO E LARANJA"],
-	[-22.904525,-44.506656,"NAO E LARANJA"],
-	[-22.994972,-44.974351,"NAO E LARANJA"],
-	[-21.877600,-47.146181,"E LARANJA"],
-	[-21.837871,-47.096982,"E LARANJA"],
-	[-21.842827,-47.117063,"E LARANJA"],
-	[-21.832821,-47.118938,"E LARANJA"],
-	[-21.855930,-47.134541,"E LARANJA"]
+	[-22.464062,-46.485597,"NÃO É LARANJA"],
+	[-22.025754,-46.612979,"NÃO É LARANJA"],
+	[-22.046688,-46.627706,"NÃO É LARANJA"],
+	[-22.904525,-44.506656,"NÃO É LARANJA"],
+	[-22.994972,-44.974351,"NÃO É LARANJA"],
+	[-21.877600,-47.146181,"É LARANJA"],
+	[-21.837871,-47.096982,"É LARANJA"],
+	[-21.842827,-47.117063,"É LARANJA"],
+	[-21.832821,-47.118938,"É LARANJA"],
+	[-21.855930,-47.134541,"É LARANJA"]
 	]
 
-verifica_tipo(coordenadas)
+if __name__ == '__main__':
+    verifica_tipo(coordenadas)
