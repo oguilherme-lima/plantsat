@@ -19,5 +19,6 @@ def retorna_tipo_plantacao(nomeImagem):
 
     # Previsão
     previsor = classificador.predict(imagem)
+    # Limpa a sessão do keras
     K.clear_session()
     return False if previsor > 0.50 else True
