@@ -1,6 +1,7 @@
 # PLANTSAT
 
-Página que permite um usuário comparar tipos de vegetação.
+Um dos primeiros projetos em Python que eu participei e fiz em conjunto com um amigo.
+O objetivo é ser uma página que permite um usuário comparar tipos de vegetação.
 
 ## Deploy no HEROKU
 
